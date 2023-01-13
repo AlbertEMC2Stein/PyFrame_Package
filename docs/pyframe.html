@@ -1,0 +1,2086 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>PyFrame.pyframe API documentation</title>
+<meta name="description" content="pyframe.py
+~~~~~~~~~~ …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>PyFrame.pyframe</code></h1>
+</header>
+<section id="section-intro">
+<p>pyframe.py
+~~~~~~~~~~</p>
+<p>A simple animation framework for Python.</p>
+<p>This module provides a simple framework for creating animations in Python. It
+is designed to be simple to use and to be easily extended. It is not intended
+to be a replacement for more powerful animation frameworks such as
+matplotlib.animation or manim.</p>
+<p>The framework is based on the concept of a Canvas object, which represents a
+figure with axes. The Canvas can be populated with Artists, which are objects
+that can draw themselves on the Canvas. The Canvas can then be shown or saved
+to disk to produce an frame by frame animation.</p>
+<p>The framework is designed to be easily extended. New types of Artists can be
+created by subclassing the Artist class. The Artist class provides a simple
+interface for drawing things on the Canvas, and for determining whether it
+should be drawn on a given frame. The Artist class also provides a simple
+interface for determining whether it is done drawing itself on the Canvas,
+meaning it an be deleted from the list of current
+artists.</p>
+<p>Pre-Impemented Artists include:
+- Artist:
+A simple artist that draws itself on the Canvas on every frame.</p>
+<pre><code>- TimedArtist:
+    A simple artist that draws itself on the Canvas between a
+    start and end frame.
+
+- ToggledArtist
+    A simple artist that draws itself on the Canvas when it is
+    toggled on.
+
+- OneTimeArtist:
+    A simple artist that draws itself on the Canvas on a single
+    (possibly future) frame and is then deactivated automatically.
+</code></pre>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+pyframe.py
+~~~~~~~~~~
+
+A simple animation framework for Python.
+
+This module provides a simple framework for creating animations in Python. It
+is designed to be simple to use and to be easily extended. It is not intended
+to be a replacement for more powerful animation frameworks such as
+matplotlib.animation or manim.
+
+The framework is based on the concept of a Canvas object, which represents a
+figure with axes. The Canvas can be populated with Artists, which are objects
+that can draw themselves on the Canvas. The Canvas can then be shown or saved
+to disk to produce an frame by frame animation.
+
+The framework is designed to be easily extended. New types of Artists can be
+created by subclassing the Artist class. The Artist class provides a simple
+interface for drawing things on the Canvas, and for determining whether it
+should be drawn on a given frame. The Artist class also provides a simple
+interface for determining whether it is done drawing itself on the Canvas,
+meaning it an be deleted from the list of current  artists.
+
+Pre-Impemented Artists include:
+    - Artist:
+        A simple artist that draws itself on the Canvas on every frame.
+
+    - TimedArtist:
+        A simple artist that draws itself on the Canvas between a
+        start and end frame.
+
+    - ToggledArtist
+        A simple artist that draws itself on the Canvas when it is
+        toggled on.
+
+    - OneTimeArtist:
+        A simple artist that draws itself on the Canvas on a single
+        (possibly future) frame and is then deactivated automatically.
+&#34;&#34;&#34;
+
+
+from string import ascii_lowercase
+from ._decorator import doc_inherit
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+class Artist():
+    &#34;&#34;&#34;
+    A simple artist that draws itself on the Canvas on every frame.
+    Subclasses:
+        - TimedArtist
+        - ToggledArtist
+        - OneTimeArtist
+
+    Attributes
+    ----------
+    id : str
+        A unique identifier for the artist.
+    artist_factory : function
+        A function that takes an axes object as an argument and draws
+        something on it.
+    layer : int, default = 0
+        The layer on which the artist should be drawn. Artists with a
+        lower layer number are drawn first.
+    deactivated : bool
+        A flag indicating whether the artist still needs to be drawn
+        on the Canvas.
+
+    Methods
+    ----------
+    draw(ax)
+        Draws the artist on the Canvas.
+    deactivate()
+        Deactivates the artist.
+    isActive(frame_counter)
+        Returns True if the artist should be drawn on the given frame.
+    isDone(frame_counter)
+        Returns True if the artist is done drawing itself on the Canvas.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, artist_factory, layer=0):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the Artist object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        layer : int
+            The layer on which the artist should be drawn. Artists with a
+            lower layer number are drawn first.
+        &#34;&#34;&#34;
+
+        self.id = &#39;&#39;.join(np.random.choice(list(ascii_lowercase), 10))
+        self.artist_factory = artist_factory
+        self.layer = layer
+        self.deactivated = False
+
+
+    def draw(self, ax):
+        &#34;&#34;&#34;
+        Draws the artist on the Canvas.
+
+        Parameters
+        ----------
+        ax : Axes
+            The axes on which the artist should be drawn.
+        &#34;&#34;&#34;
+
+        self.artist_factory(ax)
+        plt.draw()
+
+
+    def deactivate(self):
+        &#34;&#34;&#34;
+        Deactivates the artist.
+        &#34;&#34;&#34;
+
+        self.deactivated = True
+
+
+    def isActive(self, frame_counter):
+        &#34;&#34;&#34;
+        Returns True if the artist should be drawn on the given frame.
+
+        Parameters
+        ----------
+        frame_counter : int
+            The frame number for which activeness is checked.
+
+        Returns
+        -------
+        bool
+            True if the artist should be drawn on the given frame.
+        &#34;&#34;&#34;
+
+        return not self.deactivated
+
+
+    def isDone(self, frame_counter):
+        &#34;&#34;&#34;
+        Returns True if the artist is done drawing itself on the Canvas.
+
+        Parameters
+        ----------
+        frame_counter : int
+            The frame number for which being done is checked.
+
+        Returns
+        -------
+        bool
+            True if the artist is done drawing itself on the Canvas.
+        &#34;&#34;&#34;
+
+        return self.deactivated
+
+
+    def __str__(self):
+        return &#34;Artist: %s&#34; % self.id
+
+
+    def __eq__(self, other):
+        return self.id == other.id
+
+
+class TimedArtist(Artist):
+    &#34;&#34;&#34;
+    A timed artist that draws itself on the Canvas in a given range of frames.
+    Subclass of the Artist class.
+
+    Attributes
+    ----------
+    id : str
+        A unique identifier for the artist.
+    artist_factory : function
+        A function that takes an axes object as an argument and draws
+        something on it.
+    layer : int, default = 0
+        The layer on which the artist should be drawn. Artists with a
+        lower layer number are drawn first.
+    deactivated : bool
+        A flag indicating whether the artist still needs to be drawn
+        on the Canvas.
+    start : int
+        The frame number on which the artist should start drawing itself.
+    end : int
+        The frame number on which the artist should stop drawing itself.
+
+    Methods
+    ----------
+    draw(ax)
+        Draws the artist on the Canvas.
+    deactivate()
+        Deactivates the artist.
+    isActive(frame_counter)
+        Returns True if the artist should be drawn on the given frame.
+    isDone(frame_counter)
+        Returns True if the artist is done drawing itself on the Canvas.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, artist_factory, start, end, layer=0):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the TimedArtist object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        start: int
+            The frame number on which the artist should start drawing itself.
+        end: int
+            The frame number on which the artist should stop drawing itself.
+        layer : int, default = 0
+            The layer on which the artist should be drawn. Artists with a
+            lower layer number are drawn first.
+        &#34;&#34;&#34;
+
+        super().__init__(artist_factory, layer)
+        self.start = start
+        self.end = end
+
+
+    @doc_inherit 
+    def draw(self, ax):
+        self.artist_factory(ax)
+        plt.draw()
+
+
+    @doc_inherit 
+    def isActive(self, frame_counter):
+        return frame_counter &gt;= self.start and frame_counter &lt;= self.end and not self.deactivated
+
+
+    @doc_inherit 
+    def isDone(self, frame_counter):
+        return frame_counter &gt; self.end or self.deactivated
+
+
+    def __str__(self):
+        return &#34;TimedArtist: %s, start: %d, end: %d&#34; % (self.id, self.start, self.end)
+
+
+class ToggledArtist(Artist):
+    &#34;&#34;&#34;
+    A toggleable artist that draws itself on the Canvas if it is toggled on.
+    Subclass of the Artist class.
+
+    Attributes
+    ----------
+    id : str
+        A unique identifier for the artist.
+    artist_factory : function
+        A function that takes an axes object as an argument and draws
+        something on it.
+    layer : int, default = 0
+        The layer on which the artist should be drawn. Artists with a
+        lower layer number are drawn first.
+    deactivated : bool
+        A flag indicating whether the artist still needs to be drawn
+        on the Canvas.
+    state : str
+        The state of the artist. Can be &#39;active&#39; or &#39;inactive&#39;.
+
+    Methods
+    ----------
+    draw(ax)
+        Draws the artist on the Canvas.
+    deactivate()
+        Deactivates the artist.
+    toggle()
+        Toggles the artist on or off.
+    isActive(frame_counter)
+        Returns True if the artist should be drawn on the given frame.
+    isDone(frame_counter)
+        Returns True if the artist is done drawing itself on the Canvas.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, artist_factory, state, layer=0):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the ToggledArtist object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        state : str
+            The state of the artist. Can be &#39;active&#39; or &#39;inactive&#39;.
+        layer : int, default = 0
+            The layer on which the artist should be drawn. Artists with a
+            lower layer number are drawn first.
+        &#34;&#34;&#34;
+
+        super().__init__(artist_factory, layer)
+        self.state = state
+
+
+    @doc_inherit 
+    def draw(self, ax):
+        self.artist_factory(ax)
+        plt.draw()
+
+
+    def toggle(self):
+        &#34;&#34;&#34;
+        Toggles the artist on or off.
+        &#34;&#34;&#34;
+
+        self.state = &#39;active&#39; if self.state == &#39;inactive&#39; else &#39;inactive&#39;
+
+
+    @doc_inherit 
+    def isActive(self, frame_counter):
+        return self.state == &#39;active&#39; and not self.deactivated
+
+
+    @doc_inherit 
+    def isDone(self, frame_counter):
+        return self.deactivated
+    
+
+    def __str__(self):
+        return &#34;ToggledArtist: %s, state: %s&#34; % (self.id, self.state)
+
+
+class OneTimeArtist(Artist):
+    &#34;&#34;&#34;
+    A one time artist that draws itself on the Canvas once on a given frame.
+    Subclass of the Artist class.
+
+    Attributes
+    ----------
+    id : str
+        A unique identifier for the artist.
+    artist_factory : function
+        A function that takes an axes object as an argument and draws
+        something on it.
+    layer : int, default = 0
+        The layer on which the artist should be drawn. Artists with a
+        lower layer number are drawn first.
+    deactivated : bool
+        A flag indicating whether the artist still needs to be drawn
+        on the Canvas.
+    drawn : bool
+        A flag indicating whether the artist has already been drawn on the Canvas.
+    when : int
+        The frame number on which the artist should draw itself.
+
+    Methods
+    ----------
+    draw(ax)
+        Draws the artist on the Canvas.
+    deactivate()
+        Deactivates the artist.
+    toggle()
+        Toggles the artist on or off.
+    isActive(frame_counter)
+        Returns True if the artist should be drawn on the given frame.
+    isDone(frame_counter)
+        Returns True if the artist is done drawing itself on the Canvas.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, artist_factory, when=0, layer=0):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the OneTimeArtist object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        when : int, default = 0
+            The frame number on which the artist should draw itself.
+        layer : int, default = 0
+            The layer on which the artist should be drawn. Artists with a
+            lower layer number are drawn first.
+        &#34;&#34;&#34;
+
+        super().__init__(artist_factory, layer)
+        self.drawn = False
+        self.when = when
+
+
+    @doc_inherit 
+    def draw(self, ax):
+        self.artist_factory(ax)
+        self.drawn = True
+        plt.draw()
+
+
+    @doc_inherit 
+    def isActive(self, frame_counter):
+        return frame_counter == self.when and not self.deactivated
+
+
+    @doc_inherit 
+    def isDone(self, frame_counter):
+        return self.drawn or self.deactivated
+    
+
+    def __str__(self):
+        return &#34;OneTimeArtist: %s, drawn: %s&#34; % (self.id, self.drawn)
+
+
+class Canvas():
+    &#34;&#34;&#34;
+    A Canvas object that manages the drawing of Artists on a figure.
+
+    Attributes
+    ----------
+    frame_counter : int
+        The current frame number.
+    xlims : tuple
+        The x-axis limits of the figure.
+    ylims : tuple
+        The y-axis limits of the figure.
+    fig : matplotlib.figure.Figure
+        The figure on which the artists are drawn.
+    ax : matplotlib.axes.Axes
+        The axes on which the artists are drawn.
+    artists : list
+        A list of Artist objects.
+    
+    Methods
+    ----------
+    addArtistFactory(artist_factory, type, **kwargs)
+        Adds an artist to the Canvas by providing a function taking an axes 
+        object as an argument and drawing something on it.
+    addArtist(artist)
+        Adds an artist to the Canvas.
+    getAllArtists(asString=False)
+        Returns a list of all the artists on the Canvas. If asString
+        is True, the list contains the string representation of the
+        artists.
+    getActiveArtists(asString=False)
+        Returns a list of all the currently active artists on the Canvas. 
+        If asString is True, the list contains the string representation 
+        of the artists.
+    draw()
+        Draws all the artists on the Canvas and removes all done 
+        or deactivated artists.
+    resetAxes()
+        Clears the axes.
+    show()
+        Shows the figure.
+    save(folder, filename)
+        Saves the figure to a file.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, width, height, xlims=(0, 1), ylims=(0, 1), dpi=100):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the Canvas object.
+        
+        Parameters
+        ----------
+        width : int
+            The width of the figure.
+        height : int
+            The height of the figure.
+        xlims : tuple, default = (0, 1)
+            The x-axis limits of the figure.
+        ylims : tuple, default = (0, 1)
+            The y-axis limits of the figure.
+        dpi : int, default = 100
+            The resolution of the figure.
+        &#34;&#34;&#34;
+
+        self.frame_counter = 1
+        self.xlims = xlims
+        self.ylims = ylims
+        self.fig = plt.figure(figsize=(width, height), dpi=dpi)
+        self.ax = self.fig.add_subplot(111)
+        self.artists = []
+
+        self.ax.set_xlim(xlims)
+        self.ax.set_ylim(ylims)
+
+
+    def addArtistFactory(self, artist_factory, type, **kwargs):
+        &#34;&#34;&#34;
+        Adds an artist to the Canvas by providing an function
+        returning an artist given an axes object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        type : class
+            The class of the artist to be added.
+        **kwargs
+            Additional keyword arguments to be passed to the artist.
+        &#34;&#34;&#34;
+
+        self.artists += [type(artist_factory, **kwargs)]
+        self.artists.sort(key=lambda artist: artist.layer)
+
+
+    def addArtist(self, artist):
+        &#34;&#34;&#34;
+        Adds an artist to the Canvas.
+
+        Parameters
+        ----------
+        artist : Artist
+            The artist to be added.
+        &#34;&#34;&#34;
+
+        self.artists += [artist]
+        self.artists.sort(key=lambda artist: artist.layer)
+
+
+    def getAllArtists(self, asString=False):
+        &#34;&#34;&#34;
+        Returns a list of all the artists on the Canvas. If asString
+        is True, the list contains the string representation of the
+        artists.
+
+        Parameters
+        ----------
+        asString : bool, default = False
+            If True, the list contains the string representation of the
+            artists.
+
+        Returns
+        ----------
+        list
+            A list of all the artists on the Canvas.
+        &#34;&#34;&#34;
+        if asString:
+            return [str(artist) for artist in self.artists]
+        else:
+            return self.artists
+
+
+    def getActiveArtists(self, asString=False):
+        &#34;&#34;&#34;
+        Returns a list of all the currently active artists on the Canvas. 
+        If asString is True, the list contains the string representation 
+        of the artists.
+
+        Parameters
+        ----------
+        asString : bool, default = False
+            If True, the list contains the string representation of the
+            artists.
+
+        Returns
+        ----------
+        list
+            A list of all the currently active artists on the Canvas.
+        &#34;&#34;&#34;
+
+        if asString:
+            return [str(artist) for artist in self.artists if artist.isActive(self.frame_counter)]
+        else:
+            return [artist for artist in self.artists if artist.isActive(self.frame_counter)]
+
+
+    def draw(self):
+        &#34;&#34;&#34;
+        Draws all the artists on the Canvas and removes all done
+        or deactivated artists.
+        &#34;&#34;&#34;
+
+        up_for_ramoval = []
+        for artist in self.artists:
+            if artist.isActive(self.frame_counter):
+                artist.draw(self.ax)
+
+            if artist.isDone(self.frame_counter):
+                up_for_ramoval += [artist]
+
+        for artist in up_for_ramoval:
+            self.artists.remove(artist)
+
+
+    def resetAxes(self):    
+        &#34;&#34;&#34;
+        Resets the axes.
+        &#34;&#34;&#34;
+
+        self.ax.clear()
+        self.ax.set_xlim(self.xlims)
+        self.ax.set_ylim(self.ylims)
+
+
+    def show(self):
+        &#34;&#34;&#34;
+        Shows the drawn figure.
+        &#34;&#34;&#34;
+
+        self.draw()
+        plt.show()
+
+
+    def save(self, folder, fname):
+        &#34;&#34;&#34;
+        Saves the drawn figure to a file.
+
+        Parameters
+        ----------
+        folder : str
+            The folder to save the figure to.
+        fname : str
+            The name of the file to save the figure to.
+        &#34;&#34;&#34;
+
+        self.draw()
+        self.fig.savefig(f&#34;{folder}/{fname}_{self.frame_counter}&#34;)
+        self.resetAxes()
+        self.frame_counter += 1
+
+
+    def __str__(self):
+        return f&#34;The Canvas has {len(self.artists)} (possibly idle) artists:\n\t- &#34; + &#34;\n\t- &#34;.join(self.getAllArtists(asString=True))
+
+
+if __name__ == &#34;__main__&#34;:
+    import os
+
+    if not os.path.exists(&#39;out/&#39;):
+        os.makedirs(&#39;out/&#39;)
+
+    permanent_artist = Artist(lambda ax: ax.plot([0, 10], [0, 10]))
+    toggled_artist = ToggledArtist(lambda ax: ax.scatter([2.5, 7.5], [2.5, 7.5]), &#39;inactive&#39;)
+
+    canvas = Canvas(5, 5, (0, 10), (0, 10))
+    
+    canvas.addArtist(permanent_artist)
+    canvas.addArtistFactory(lambda ax: ax.plot([0, 10], [10, 0]), Artist)
+    canvas.addArtistFactory(lambda ax: ax.plot([0, 10], [5, 5]), TimedArtist, start=10, end=20)
+    canvas.addArtistFactory(lambda ax: ax.plot([5, 5], [0, 10]), TimedArtist, start=30, end=40)
+    canvas.addArtist(toggled_artist)
+    canvas.addArtistFactory(lambda ax: ax.scatter([5], [5], s=50), OneTimeArtist, when=25)
+
+    print(canvas, &#39;\n&#39;)
+    for i in range(50):
+        if canvas.frame_counter in [25, 30]:
+            toggled_artist.toggle()
+
+        if canvas.frame_counter == 45:
+            permanent_artist.deactivate()
+
+        print(f&#34;Frame {canvas.frame_counter}:\n\t- &#34; + &#34;\n\t- &#34;.join(canvas.getActiveArtists(asString=True)) + &#34;\n&#34;)
+        canvas.save(&#39;out&#39;, &#39;test&#39;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="PyFrame.pyframe.Artist"><code class="flex name class">
+<span>class <span class="ident">Artist</span></span>
+<span>(</span><span>artist_factory, layer=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A simple artist that draws itself on the Canvas on every frame.</p>
+<h2 id="subclasses">Subclasses</h2>
+<ul>
+<li>TimedArtist</li>
+<li>ToggledArtist</li>
+<li>OneTimeArtist</li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>A unique identifier for the artist.</dd>
+<dt><strong><code>artist_factory</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function that takes an axes object as an argument and draws
+something on it.</dd>
+<dt><strong><code>layer</code></strong> :&ensp;<code>int</code>, default <code>= 0</code></dt>
+<dd>The layer on which the artist should be drawn. Artists with a
+lower layer number are drawn first.</dd>
+<dt><strong><code>deactivated</code></strong> :&ensp;<code>bool</code></dt>
+<dd>A flag indicating whether the artist still needs to be drawn
+on the Canvas.</dd>
+</dl>
+<h2 id="methods">Methods</h2>
+<p>draw(ax)
+Draws the artist on the Canvas.
+deactivate()
+Deactivates the artist.
+isActive(frame_counter)
+Returns True if the artist should be drawn on the given frame.
+isDone(frame_counter)
+Returns True if the artist is done drawing itself on the Canvas.</p>
+<p>Constructs all the necessary attributes for the Artist object.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>artist_factory</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function that takes an axes object as an argument and draws
+something on it.</dd>
+<dt><strong><code>layer</code></strong> :&ensp;<code>int</code></dt>
+<dd>The layer on which the artist should be drawn. Artists with a
+lower layer number are drawn first.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Artist():
+    &#34;&#34;&#34;
+    A simple artist that draws itself on the Canvas on every frame.
+    Subclasses:
+        - TimedArtist
+        - ToggledArtist
+        - OneTimeArtist
+
+    Attributes
+    ----------
+    id : str
+        A unique identifier for the artist.
+    artist_factory : function
+        A function that takes an axes object as an argument and draws
+        something on it.
+    layer : int, default = 0
+        The layer on which the artist should be drawn. Artists with a
+        lower layer number are drawn first.
+    deactivated : bool
+        A flag indicating whether the artist still needs to be drawn
+        on the Canvas.
+
+    Methods
+    ----------
+    draw(ax)
+        Draws the artist on the Canvas.
+    deactivate()
+        Deactivates the artist.
+    isActive(frame_counter)
+        Returns True if the artist should be drawn on the given frame.
+    isDone(frame_counter)
+        Returns True if the artist is done drawing itself on the Canvas.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, artist_factory, layer=0):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the Artist object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        layer : int
+            The layer on which the artist should be drawn. Artists with a
+            lower layer number are drawn first.
+        &#34;&#34;&#34;
+
+        self.id = &#39;&#39;.join(np.random.choice(list(ascii_lowercase), 10))
+        self.artist_factory = artist_factory
+        self.layer = layer
+        self.deactivated = False
+
+
+    def draw(self, ax):
+        &#34;&#34;&#34;
+        Draws the artist on the Canvas.
+
+        Parameters
+        ----------
+        ax : Axes
+            The axes on which the artist should be drawn.
+        &#34;&#34;&#34;
+
+        self.artist_factory(ax)
+        plt.draw()
+
+
+    def deactivate(self):
+        &#34;&#34;&#34;
+        Deactivates the artist.
+        &#34;&#34;&#34;
+
+        self.deactivated = True
+
+
+    def isActive(self, frame_counter):
+        &#34;&#34;&#34;
+        Returns True if the artist should be drawn on the given frame.
+
+        Parameters
+        ----------
+        frame_counter : int
+            The frame number for which activeness is checked.
+
+        Returns
+        -------
+        bool
+            True if the artist should be drawn on the given frame.
+        &#34;&#34;&#34;
+
+        return not self.deactivated
+
+
+    def isDone(self, frame_counter):
+        &#34;&#34;&#34;
+        Returns True if the artist is done drawing itself on the Canvas.
+
+        Parameters
+        ----------
+        frame_counter : int
+            The frame number for which being done is checked.
+
+        Returns
+        -------
+        bool
+            True if the artist is done drawing itself on the Canvas.
+        &#34;&#34;&#34;
+
+        return self.deactivated
+
+
+    def __str__(self):
+        return &#34;Artist: %s&#34; % self.id
+
+
+    def __eq__(self, other):
+        return self.id == other.id</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="PyFrame.pyframe.OneTimeArtist" href="#PyFrame.pyframe.OneTimeArtist">OneTimeArtist</a></li>
+<li><a title="PyFrame.pyframe.TimedArtist" href="#PyFrame.pyframe.TimedArtist">TimedArtist</a></li>
+<li><a title="PyFrame.pyframe.ToggledArtist" href="#PyFrame.pyframe.ToggledArtist">ToggledArtist</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="PyFrame.pyframe.Artist.deactivate"><code class="name flex">
+<span>def <span class="ident">deactivate</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Deactivates the artist.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deactivate(self):
+    &#34;&#34;&#34;
+    Deactivates the artist.
+    &#34;&#34;&#34;
+
+    self.deactivated = True</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Artist.draw"><code class="name flex">
+<span>def <span class="ident">draw</span></span>(<span>self, ax)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws the artist on the Canvas.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>ax</code></strong> :&ensp;<code>Axes</code></dt>
+<dd>The axes on which the artist should be drawn.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw(self, ax):
+    &#34;&#34;&#34;
+    Draws the artist on the Canvas.
+
+    Parameters
+    ----------
+    ax : Axes
+        The axes on which the artist should be drawn.
+    &#34;&#34;&#34;
+
+    self.artist_factory(ax)
+    plt.draw()</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Artist.isActive"><code class="name flex">
+<span>def <span class="ident">isActive</span></span>(<span>self, frame_counter)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns True if the artist should be drawn on the given frame.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>frame_counter</code></strong> :&ensp;<code>int</code></dt>
+<dd>The frame number for which activeness is checked.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the artist should be drawn on the given frame.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isActive(self, frame_counter):
+    &#34;&#34;&#34;
+    Returns True if the artist should be drawn on the given frame.
+
+    Parameters
+    ----------
+    frame_counter : int
+        The frame number for which activeness is checked.
+
+    Returns
+    -------
+    bool
+        True if the artist should be drawn on the given frame.
+    &#34;&#34;&#34;
+
+    return not self.deactivated</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Artist.isDone"><code class="name flex">
+<span>def <span class="ident">isDone</span></span>(<span>self, frame_counter)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns True if the artist is done drawing itself on the Canvas.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>frame_counter</code></strong> :&ensp;<code>int</code></dt>
+<dd>The frame number for which being done is checked.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the artist is done drawing itself on the Canvas.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isDone(self, frame_counter):
+    &#34;&#34;&#34;
+    Returns True if the artist is done drawing itself on the Canvas.
+
+    Parameters
+    ----------
+    frame_counter : int
+        The frame number for which being done is checked.
+
+    Returns
+    -------
+    bool
+        True if the artist is done drawing itself on the Canvas.
+    &#34;&#34;&#34;
+
+    return self.deactivated</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="PyFrame.pyframe.Canvas"><code class="flex name class">
+<span>class <span class="ident">Canvas</span></span>
+<span>(</span><span>width, height, xlims=(0, 1), ylims=(0, 1), dpi=100)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A Canvas object that manages the drawing of Artists on a figure.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>frame_counter</code></strong> :&ensp;<code>int</code></dt>
+<dd>The current frame number.</dd>
+<dt><strong><code>xlims</code></strong> :&ensp;<code>tuple</code></dt>
+<dd>The x-axis limits of the figure.</dd>
+<dt><strong><code>ylims</code></strong> :&ensp;<code>tuple</code></dt>
+<dd>The y-axis limits of the figure.</dd>
+<dt><strong><code>fig</code></strong> :&ensp;<code>matplotlib.figure.Figure</code></dt>
+<dd>The figure on which the artists are drawn.</dd>
+<dt><strong><code>ax</code></strong> :&ensp;<code>matplotlib.axes.Axes</code></dt>
+<dd>The axes on which the artists are drawn.</dd>
+<dt><strong><code>artists</code></strong> :&ensp;<code>list</code></dt>
+<dd>A list of Artist objects.</dd>
+</dl>
+<h2 id="methods">Methods</h2>
+<p>addArtistFactory(artist_factory, type, **kwargs)
+Adds an artist to the Canvas by providing a function taking an axes
+object as an argument and drawing something on it.
+addArtist(artist)
+Adds an artist to the Canvas.
+getAllArtists(asString=False)
+Returns a list of all the artists on the Canvas. If asString
+is True, the list contains the string representation of the
+artists.
+getActiveArtists(asString=False)
+Returns a list of all the currently active artists on the Canvas.
+If asString is True, the list contains the string representation
+of the artists.
+draw()
+Draws all the artists on the Canvas and removes all done
+or deactivated artists.
+resetAxes()
+Clears the axes.
+show()
+Shows the figure.
+save(folder, filename)
+Saves the figure to a file.</p>
+<p>Constructs all the necessary attributes for the Canvas object.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>width</code></strong> :&ensp;<code>int</code></dt>
+<dd>The width of the figure.</dd>
+<dt><strong><code>height</code></strong> :&ensp;<code>int</code></dt>
+<dd>The height of the figure.</dd>
+<dt><strong><code>xlims</code></strong> :&ensp;<code>tuple</code>, default <code>= (0, 1)</code></dt>
+<dd>The x-axis limits of the figure.</dd>
+<dt><strong><code>ylims</code></strong> :&ensp;<code>tuple</code>, default <code>= (0, 1)</code></dt>
+<dd>The y-axis limits of the figure.</dd>
+<dt><strong><code>dpi</code></strong> :&ensp;<code>int</code>, default <code>= 100</code></dt>
+<dd>The resolution of the figure.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Canvas():
+    &#34;&#34;&#34;
+    A Canvas object that manages the drawing of Artists on a figure.
+
+    Attributes
+    ----------
+    frame_counter : int
+        The current frame number.
+    xlims : tuple
+        The x-axis limits of the figure.
+    ylims : tuple
+        The y-axis limits of the figure.
+    fig : matplotlib.figure.Figure
+        The figure on which the artists are drawn.
+    ax : matplotlib.axes.Axes
+        The axes on which the artists are drawn.
+    artists : list
+        A list of Artist objects.
+    
+    Methods
+    ----------
+    addArtistFactory(artist_factory, type, **kwargs)
+        Adds an artist to the Canvas by providing a function taking an axes 
+        object as an argument and drawing something on it.
+    addArtist(artist)
+        Adds an artist to the Canvas.
+    getAllArtists(asString=False)
+        Returns a list of all the artists on the Canvas. If asString
+        is True, the list contains the string representation of the
+        artists.
+    getActiveArtists(asString=False)
+        Returns a list of all the currently active artists on the Canvas. 
+        If asString is True, the list contains the string representation 
+        of the artists.
+    draw()
+        Draws all the artists on the Canvas and removes all done 
+        or deactivated artists.
+    resetAxes()
+        Clears the axes.
+    show()
+        Shows the figure.
+    save(folder, filename)
+        Saves the figure to a file.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, width, height, xlims=(0, 1), ylims=(0, 1), dpi=100):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the Canvas object.
+        
+        Parameters
+        ----------
+        width : int
+            The width of the figure.
+        height : int
+            The height of the figure.
+        xlims : tuple, default = (0, 1)
+            The x-axis limits of the figure.
+        ylims : tuple, default = (0, 1)
+            The y-axis limits of the figure.
+        dpi : int, default = 100
+            The resolution of the figure.
+        &#34;&#34;&#34;
+
+        self.frame_counter = 1
+        self.xlims = xlims
+        self.ylims = ylims
+        self.fig = plt.figure(figsize=(width, height), dpi=dpi)
+        self.ax = self.fig.add_subplot(111)
+        self.artists = []
+
+        self.ax.set_xlim(xlims)
+        self.ax.set_ylim(ylims)
+
+
+    def addArtistFactory(self, artist_factory, type, **kwargs):
+        &#34;&#34;&#34;
+        Adds an artist to the Canvas by providing an function
+        returning an artist given an axes object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        type : class
+            The class of the artist to be added.
+        **kwargs
+            Additional keyword arguments to be passed to the artist.
+        &#34;&#34;&#34;
+
+        self.artists += [type(artist_factory, **kwargs)]
+        self.artists.sort(key=lambda artist: artist.layer)
+
+
+    def addArtist(self, artist):
+        &#34;&#34;&#34;
+        Adds an artist to the Canvas.
+
+        Parameters
+        ----------
+        artist : Artist
+            The artist to be added.
+        &#34;&#34;&#34;
+
+        self.artists += [artist]
+        self.artists.sort(key=lambda artist: artist.layer)
+
+
+    def getAllArtists(self, asString=False):
+        &#34;&#34;&#34;
+        Returns a list of all the artists on the Canvas. If asString
+        is True, the list contains the string representation of the
+        artists.
+
+        Parameters
+        ----------
+        asString : bool, default = False
+            If True, the list contains the string representation of the
+            artists.
+
+        Returns
+        ----------
+        list
+            A list of all the artists on the Canvas.
+        &#34;&#34;&#34;
+        if asString:
+            return [str(artist) for artist in self.artists]
+        else:
+            return self.artists
+
+
+    def getActiveArtists(self, asString=False):
+        &#34;&#34;&#34;
+        Returns a list of all the currently active artists on the Canvas. 
+        If asString is True, the list contains the string representation 
+        of the artists.
+
+        Parameters
+        ----------
+        asString : bool, default = False
+            If True, the list contains the string representation of the
+            artists.
+
+        Returns
+        ----------
+        list
+            A list of all the currently active artists on the Canvas.
+        &#34;&#34;&#34;
+
+        if asString:
+            return [str(artist) for artist in self.artists if artist.isActive(self.frame_counter)]
+        else:
+            return [artist for artist in self.artists if artist.isActive(self.frame_counter)]
+
+
+    def draw(self):
+        &#34;&#34;&#34;
+        Draws all the artists on the Canvas and removes all done
+        or deactivated artists.
+        &#34;&#34;&#34;
+
+        up_for_ramoval = []
+        for artist in self.artists:
+            if artist.isActive(self.frame_counter):
+                artist.draw(self.ax)
+
+            if artist.isDone(self.frame_counter):
+                up_for_ramoval += [artist]
+
+        for artist in up_for_ramoval:
+            self.artists.remove(artist)
+
+
+    def resetAxes(self):    
+        &#34;&#34;&#34;
+        Resets the axes.
+        &#34;&#34;&#34;
+
+        self.ax.clear()
+        self.ax.set_xlim(self.xlims)
+        self.ax.set_ylim(self.ylims)
+
+
+    def show(self):
+        &#34;&#34;&#34;
+        Shows the drawn figure.
+        &#34;&#34;&#34;
+
+        self.draw()
+        plt.show()
+
+
+    def save(self, folder, fname):
+        &#34;&#34;&#34;
+        Saves the drawn figure to a file.
+
+        Parameters
+        ----------
+        folder : str
+            The folder to save the figure to.
+        fname : str
+            The name of the file to save the figure to.
+        &#34;&#34;&#34;
+
+        self.draw()
+        self.fig.savefig(f&#34;{folder}/{fname}_{self.frame_counter}&#34;)
+        self.resetAxes()
+        self.frame_counter += 1
+
+
+    def __str__(self):
+        return f&#34;The Canvas has {len(self.artists)} (possibly idle) artists:\n\t- &#34; + &#34;\n\t- &#34;.join(self.getAllArtists(asString=True))</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="PyFrame.pyframe.Canvas.addArtist"><code class="name flex">
+<span>def <span class="ident">addArtist</span></span>(<span>self, artist)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds an artist to the Canvas.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>artist</code></strong> :&ensp;<code><a title="PyFrame.pyframe.Artist" href="#PyFrame.pyframe.Artist">Artist</a></code></dt>
+<dd>The artist to be added.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addArtist(self, artist):
+    &#34;&#34;&#34;
+    Adds an artist to the Canvas.
+
+    Parameters
+    ----------
+    artist : Artist
+        The artist to be added.
+    &#34;&#34;&#34;
+
+    self.artists += [artist]
+    self.artists.sort(key=lambda artist: artist.layer)</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Canvas.addArtistFactory"><code class="name flex">
+<span>def <span class="ident">addArtistFactory</span></span>(<span>self, artist_factory, type, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds an artist to the Canvas by providing an function
+returning an artist given an axes object.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>artist_factory</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function that takes an axes object as an argument and draws
+something on it.</dd>
+<dt><strong><code>type</code></strong> :&ensp;<code>class</code></dt>
+<dd>The class of the artist to be added.</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>Additional keyword arguments to be passed to the artist.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addArtistFactory(self, artist_factory, type, **kwargs):
+    &#34;&#34;&#34;
+    Adds an artist to the Canvas by providing an function
+    returning an artist given an axes object.
+
+    Parameters
+    ----------
+    artist_factory : function
+        A function that takes an axes object as an argument and draws
+        something on it.
+    type : class
+        The class of the artist to be added.
+    **kwargs
+        Additional keyword arguments to be passed to the artist.
+    &#34;&#34;&#34;
+
+    self.artists += [type(artist_factory, **kwargs)]
+    self.artists.sort(key=lambda artist: artist.layer)</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Canvas.draw"><code class="name flex">
+<span>def <span class="ident">draw</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draws all the artists on the Canvas and removes all done
+or deactivated artists.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw(self):
+    &#34;&#34;&#34;
+    Draws all the artists on the Canvas and removes all done
+    or deactivated artists.
+    &#34;&#34;&#34;
+
+    up_for_ramoval = []
+    for artist in self.artists:
+        if artist.isActive(self.frame_counter):
+            artist.draw(self.ax)
+
+        if artist.isDone(self.frame_counter):
+            up_for_ramoval += [artist]
+
+    for artist in up_for_ramoval:
+        self.artists.remove(artist)</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Canvas.getActiveArtists"><code class="name flex">
+<span>def <span class="ident">getActiveArtists</span></span>(<span>self, asString=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of all the currently active artists on the Canvas.
+If asString is True, the list contains the string representation
+of the artists.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>asString</code></strong> :&ensp;<code>bool</code>, default <code>= False</code></dt>
+<dd>If True, the list contains the string representation of the
+artists.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>A list of all the currently active artists on the Canvas.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getActiveArtists(self, asString=False):
+    &#34;&#34;&#34;
+    Returns a list of all the currently active artists on the Canvas. 
+    If asString is True, the list contains the string representation 
+    of the artists.
+
+    Parameters
+    ----------
+    asString : bool, default = False
+        If True, the list contains the string representation of the
+        artists.
+
+    Returns
+    ----------
+    list
+        A list of all the currently active artists on the Canvas.
+    &#34;&#34;&#34;
+
+    if asString:
+        return [str(artist) for artist in self.artists if artist.isActive(self.frame_counter)]
+    else:
+        return [artist for artist in self.artists if artist.isActive(self.frame_counter)]</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Canvas.getAllArtists"><code class="name flex">
+<span>def <span class="ident">getAllArtists</span></span>(<span>self, asString=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of all the artists on the Canvas. If asString
+is True, the list contains the string representation of the
+artists.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>asString</code></strong> :&ensp;<code>bool</code>, default <code>= False</code></dt>
+<dd>If True, the list contains the string representation of the
+artists.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>A list of all the artists on the Canvas.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAllArtists(self, asString=False):
+    &#34;&#34;&#34;
+    Returns a list of all the artists on the Canvas. If asString
+    is True, the list contains the string representation of the
+    artists.
+
+    Parameters
+    ----------
+    asString : bool, default = False
+        If True, the list contains the string representation of the
+        artists.
+
+    Returns
+    ----------
+    list
+        A list of all the artists on the Canvas.
+    &#34;&#34;&#34;
+    if asString:
+        return [str(artist) for artist in self.artists]
+    else:
+        return self.artists</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Canvas.resetAxes"><code class="name flex">
+<span>def <span class="ident">resetAxes</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Resets the axes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def resetAxes(self):    
+    &#34;&#34;&#34;
+    Resets the axes.
+    &#34;&#34;&#34;
+
+    self.ax.clear()
+    self.ax.set_xlim(self.xlims)
+    self.ax.set_ylim(self.ylims)</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Canvas.save"><code class="name flex">
+<span>def <span class="ident">save</span></span>(<span>self, folder, fname)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Saves the drawn figure to a file.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>folder</code></strong> :&ensp;<code>str</code></dt>
+<dd>The folder to save the figure to.</dd>
+<dt><strong><code>fname</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the file to save the figure to.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save(self, folder, fname):
+    &#34;&#34;&#34;
+    Saves the drawn figure to a file.
+
+    Parameters
+    ----------
+    folder : str
+        The folder to save the figure to.
+    fname : str
+        The name of the file to save the figure to.
+    &#34;&#34;&#34;
+
+    self.draw()
+    self.fig.savefig(f&#34;{folder}/{fname}_{self.frame_counter}&#34;)
+    self.resetAxes()
+    self.frame_counter += 1</code></pre>
+</details>
+</dd>
+<dt id="PyFrame.pyframe.Canvas.show"><code class="name flex">
+<span>def <span class="ident">show</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Shows the drawn figure.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def show(self):
+    &#34;&#34;&#34;
+    Shows the drawn figure.
+    &#34;&#34;&#34;
+
+    self.draw()
+    plt.show()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="PyFrame.pyframe.OneTimeArtist"><code class="flex name class">
+<span>class <span class="ident">OneTimeArtist</span></span>
+<span>(</span><span>artist_factory, when=0, layer=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A one time artist that draws itself on the Canvas once on a given frame.
+Subclass of the Artist class.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>A unique identifier for the artist.</dd>
+<dt><strong><code>artist_factory</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function that takes an axes object as an argument and draws
+something on it.</dd>
+<dt><strong><code>layer</code></strong> :&ensp;<code>int</code>, default <code>= 0</code></dt>
+<dd>The layer on which the artist should be drawn. Artists with a
+lower layer number are drawn first.</dd>
+<dt><strong><code>deactivated</code></strong> :&ensp;<code>bool</code></dt>
+<dd>A flag indicating whether the artist still needs to be drawn
+on the Canvas.</dd>
+<dt><strong><code>drawn</code></strong> :&ensp;<code>bool</code></dt>
+<dd>A flag indicating whether the artist has already been drawn on the Canvas.</dd>
+<dt><strong><code>when</code></strong> :&ensp;<code>int</code></dt>
+<dd>The frame number on which the artist should draw itself.</dd>
+</dl>
+<h2 id="methods">Methods</h2>
+<p>draw(ax)
+Draws the artist on the Canvas.
+deactivate()
+Deactivates the artist.
+toggle()
+Toggles the artist on or off.
+isActive(frame_counter)
+Returns True if the artist should be drawn on the given frame.
+isDone(frame_counter)
+Returns True if the artist is done drawing itself on the Canvas.</p>
+<p>Constructs all the necessary attributes for the OneTimeArtist object.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>artist_factory</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function that takes an axes object as an argument and draws
+something on it.</dd>
+<dt><strong><code>when</code></strong> :&ensp;<code>int</code>, default <code>= 0</code></dt>
+<dd>The frame number on which the artist should draw itself.</dd>
+<dt><strong><code>layer</code></strong> :&ensp;<code>int</code>, default <code>= 0</code></dt>
+<dd>The layer on which the artist should be drawn. Artists with a
+lower layer number are drawn first.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OneTimeArtist(Artist):
+    &#34;&#34;&#34;
+    A one time artist that draws itself on the Canvas once on a given frame.
+    Subclass of the Artist class.
+
+    Attributes
+    ----------
+    id : str
+        A unique identifier for the artist.
+    artist_factory : function
+        A function that takes an axes object as an argument and draws
+        something on it.
+    layer : int, default = 0
+        The layer on which the artist should be drawn. Artists with a
+        lower layer number are drawn first.
+    deactivated : bool
+        A flag indicating whether the artist still needs to be drawn
+        on the Canvas.
+    drawn : bool
+        A flag indicating whether the artist has already been drawn on the Canvas.
+    when : int
+        The frame number on which the artist should draw itself.
+
+    Methods
+    ----------
+    draw(ax)
+        Draws the artist on the Canvas.
+    deactivate()
+        Deactivates the artist.
+    toggle()
+        Toggles the artist on or off.
+    isActive(frame_counter)
+        Returns True if the artist should be drawn on the given frame.
+    isDone(frame_counter)
+        Returns True if the artist is done drawing itself on the Canvas.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, artist_factory, when=0, layer=0):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the OneTimeArtist object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        when : int, default = 0
+            The frame number on which the artist should draw itself.
+        layer : int, default = 0
+            The layer on which the artist should be drawn. Artists with a
+            lower layer number are drawn first.
+        &#34;&#34;&#34;
+
+        super().__init__(artist_factory, layer)
+        self.drawn = False
+        self.when = when
+
+
+    @doc_inherit 
+    def draw(self, ax):
+        self.artist_factory(ax)
+        self.drawn = True
+        plt.draw()
+
+
+    @doc_inherit 
+    def isActive(self, frame_counter):
+        return frame_counter == self.when and not self.deactivated
+
+
+    @doc_inherit 
+    def isDone(self, frame_counter):
+        return self.drawn or self.deactivated
+    
+
+    def __str__(self):
+        return &#34;OneTimeArtist: %s, drawn: %s&#34; % (self.id, self.drawn)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="PyFrame.pyframe.Artist" href="#PyFrame.pyframe.Artist">Artist</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="PyFrame.pyframe.Artist" href="#PyFrame.pyframe.Artist">Artist</a></b></code>:
+<ul class="hlist">
+<li><code><a title="PyFrame.pyframe.Artist.deactivate" href="#PyFrame.pyframe.Artist.deactivate">deactivate</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.draw" href="#PyFrame.pyframe.Artist.draw">draw</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.isActive" href="#PyFrame.pyframe.Artist.isActive">isActive</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.isDone" href="#PyFrame.pyframe.Artist.isDone">isDone</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="PyFrame.pyframe.TimedArtist"><code class="flex name class">
+<span>class <span class="ident">TimedArtist</span></span>
+<span>(</span><span>artist_factory, start, end, layer=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A timed artist that draws itself on the Canvas in a given range of frames.
+Subclass of the Artist class.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>A unique identifier for the artist.</dd>
+<dt><strong><code>artist_factory</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function that takes an axes object as an argument and draws
+something on it.</dd>
+<dt><strong><code>layer</code></strong> :&ensp;<code>int</code>, default <code>= 0</code></dt>
+<dd>The layer on which the artist should be drawn. Artists with a
+lower layer number are drawn first.</dd>
+<dt><strong><code>deactivated</code></strong> :&ensp;<code>bool</code></dt>
+<dd>A flag indicating whether the artist still needs to be drawn
+on the Canvas.</dd>
+<dt><strong><code>start</code></strong> :&ensp;<code>int</code></dt>
+<dd>The frame number on which the artist should start drawing itself.</dd>
+<dt><strong><code>end</code></strong> :&ensp;<code>int</code></dt>
+<dd>The frame number on which the artist should stop drawing itself.</dd>
+</dl>
+<h2 id="methods">Methods</h2>
+<p>draw(ax)
+Draws the artist on the Canvas.
+deactivate()
+Deactivates the artist.
+isActive(frame_counter)
+Returns True if the artist should be drawn on the given frame.
+isDone(frame_counter)
+Returns True if the artist is done drawing itself on the Canvas.</p>
+<p>Constructs all the necessary attributes for the TimedArtist object.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>artist_factory</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function that takes an axes object as an argument and draws
+something on it.</dd>
+<dt><strong><code>start</code></strong> :&ensp;<code>int</code></dt>
+<dd>The frame number on which the artist should start drawing itself.</dd>
+<dt><strong><code>end</code></strong> :&ensp;<code>int</code></dt>
+<dd>The frame number on which the artist should stop drawing itself.</dd>
+<dt><strong><code>layer</code></strong> :&ensp;<code>int</code>, default <code>= 0</code></dt>
+<dd>The layer on which the artist should be drawn. Artists with a
+lower layer number are drawn first.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TimedArtist(Artist):
+    &#34;&#34;&#34;
+    A timed artist that draws itself on the Canvas in a given range of frames.
+    Subclass of the Artist class.
+
+    Attributes
+    ----------
+    id : str
+        A unique identifier for the artist.
+    artist_factory : function
+        A function that takes an axes object as an argument and draws
+        something on it.
+    layer : int, default = 0
+        The layer on which the artist should be drawn. Artists with a
+        lower layer number are drawn first.
+    deactivated : bool
+        A flag indicating whether the artist still needs to be drawn
+        on the Canvas.
+    start : int
+        The frame number on which the artist should start drawing itself.
+    end : int
+        The frame number on which the artist should stop drawing itself.
+
+    Methods
+    ----------
+    draw(ax)
+        Draws the artist on the Canvas.
+    deactivate()
+        Deactivates the artist.
+    isActive(frame_counter)
+        Returns True if the artist should be drawn on the given frame.
+    isDone(frame_counter)
+        Returns True if the artist is done drawing itself on the Canvas.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, artist_factory, start, end, layer=0):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the TimedArtist object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        start: int
+            The frame number on which the artist should start drawing itself.
+        end: int
+            The frame number on which the artist should stop drawing itself.
+        layer : int, default = 0
+            The layer on which the artist should be drawn. Artists with a
+            lower layer number are drawn first.
+        &#34;&#34;&#34;
+
+        super().__init__(artist_factory, layer)
+        self.start = start
+        self.end = end
+
+
+    @doc_inherit 
+    def draw(self, ax):
+        self.artist_factory(ax)
+        plt.draw()
+
+
+    @doc_inherit 
+    def isActive(self, frame_counter):
+        return frame_counter &gt;= self.start and frame_counter &lt;= self.end and not self.deactivated
+
+
+    @doc_inherit 
+    def isDone(self, frame_counter):
+        return frame_counter &gt; self.end or self.deactivated
+
+
+    def __str__(self):
+        return &#34;TimedArtist: %s, start: %d, end: %d&#34; % (self.id, self.start, self.end)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="PyFrame.pyframe.Artist" href="#PyFrame.pyframe.Artist">Artist</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="PyFrame.pyframe.Artist" href="#PyFrame.pyframe.Artist">Artist</a></b></code>:
+<ul class="hlist">
+<li><code><a title="PyFrame.pyframe.Artist.deactivate" href="#PyFrame.pyframe.Artist.deactivate">deactivate</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.draw" href="#PyFrame.pyframe.Artist.draw">draw</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.isActive" href="#PyFrame.pyframe.Artist.isActive">isActive</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.isDone" href="#PyFrame.pyframe.Artist.isDone">isDone</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="PyFrame.pyframe.ToggledArtist"><code class="flex name class">
+<span>class <span class="ident">ToggledArtist</span></span>
+<span>(</span><span>artist_factory, state, layer=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A toggleable artist that draws itself on the Canvas if it is toggled on.
+Subclass of the Artist class.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>A unique identifier for the artist.</dd>
+<dt><strong><code>artist_factory</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function that takes an axes object as an argument and draws
+something on it.</dd>
+<dt><strong><code>layer</code></strong> :&ensp;<code>int</code>, default <code>= 0</code></dt>
+<dd>The layer on which the artist should be drawn. Artists with a
+lower layer number are drawn first.</dd>
+<dt><strong><code>deactivated</code></strong> :&ensp;<code>bool</code></dt>
+<dd>A flag indicating whether the artist still needs to be drawn
+on the Canvas.</dd>
+<dt><strong><code>state</code></strong> :&ensp;<code>str</code></dt>
+<dd>The state of the artist. Can be 'active' or 'inactive'.</dd>
+</dl>
+<h2 id="methods">Methods</h2>
+<p>draw(ax)
+Draws the artist on the Canvas.
+deactivate()
+Deactivates the artist.
+toggle()
+Toggles the artist on or off.
+isActive(frame_counter)
+Returns True if the artist should be drawn on the given frame.
+isDone(frame_counter)
+Returns True if the artist is done drawing itself on the Canvas.</p>
+<p>Constructs all the necessary attributes for the ToggledArtist object.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>artist_factory</code></strong> :&ensp;<code>function</code></dt>
+<dd>A function that takes an axes object as an argument and draws
+something on it.</dd>
+<dt><strong><code>state</code></strong> :&ensp;<code>str</code></dt>
+<dd>The state of the artist. Can be 'active' or 'inactive'.</dd>
+<dt><strong><code>layer</code></strong> :&ensp;<code>int</code>, default <code>= 0</code></dt>
+<dd>The layer on which the artist should be drawn. Artists with a
+lower layer number are drawn first.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ToggledArtist(Artist):
+    &#34;&#34;&#34;
+    A toggleable artist that draws itself on the Canvas if it is toggled on.
+    Subclass of the Artist class.
+
+    Attributes
+    ----------
+    id : str
+        A unique identifier for the artist.
+    artist_factory : function
+        A function that takes an axes object as an argument and draws
+        something on it.
+    layer : int, default = 0
+        The layer on which the artist should be drawn. Artists with a
+        lower layer number are drawn first.
+    deactivated : bool
+        A flag indicating whether the artist still needs to be drawn
+        on the Canvas.
+    state : str
+        The state of the artist. Can be &#39;active&#39; or &#39;inactive&#39;.
+
+    Methods
+    ----------
+    draw(ax)
+        Draws the artist on the Canvas.
+    deactivate()
+        Deactivates the artist.
+    toggle()
+        Toggles the artist on or off.
+    isActive(frame_counter)
+        Returns True if the artist should be drawn on the given frame.
+    isDone(frame_counter)
+        Returns True if the artist is done drawing itself on the Canvas.
+    &#34;&#34;&#34;
+
+
+    def __init__(self, artist_factory, state, layer=0):
+        &#34;&#34;&#34;
+        Constructs all the necessary attributes for the ToggledArtist object.
+
+        Parameters
+        ----------
+        artist_factory : function
+            A function that takes an axes object as an argument and draws
+            something on it.
+        state : str
+            The state of the artist. Can be &#39;active&#39; or &#39;inactive&#39;.
+        layer : int, default = 0
+            The layer on which the artist should be drawn. Artists with a
+            lower layer number are drawn first.
+        &#34;&#34;&#34;
+
+        super().__init__(artist_factory, layer)
+        self.state = state
+
+
+    @doc_inherit 
+    def draw(self, ax):
+        self.artist_factory(ax)
+        plt.draw()
+
+
+    def toggle(self):
+        &#34;&#34;&#34;
+        Toggles the artist on or off.
+        &#34;&#34;&#34;
+
+        self.state = &#39;active&#39; if self.state == &#39;inactive&#39; else &#39;inactive&#39;
+
+
+    @doc_inherit 
+    def isActive(self, frame_counter):
+        return self.state == &#39;active&#39; and not self.deactivated
+
+
+    @doc_inherit 
+    def isDone(self, frame_counter):
+        return self.deactivated
+    
+
+    def __str__(self):
+        return &#34;ToggledArtist: %s, state: %s&#34; % (self.id, self.state)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="PyFrame.pyframe.Artist" href="#PyFrame.pyframe.Artist">Artist</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="PyFrame.pyframe.ToggledArtist.toggle"><code class="name flex">
+<span>def <span class="ident">toggle</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Toggles the artist on or off.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def toggle(self):
+    &#34;&#34;&#34;
+    Toggles the artist on or off.
+    &#34;&#34;&#34;
+
+    self.state = &#39;active&#39; if self.state == &#39;inactive&#39; else &#39;inactive&#39;</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="PyFrame.pyframe.Artist" href="#PyFrame.pyframe.Artist">Artist</a></b></code>:
+<ul class="hlist">
+<li><code><a title="PyFrame.pyframe.Artist.deactivate" href="#PyFrame.pyframe.Artist.deactivate">deactivate</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.draw" href="#PyFrame.pyframe.Artist.draw">draw</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.isActive" href="#PyFrame.pyframe.Artist.isActive">isActive</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.isDone" href="#PyFrame.pyframe.Artist.isDone">isDone</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="PyFrame" href="index.html">PyFrame</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="PyFrame.pyframe.Artist" href="#PyFrame.pyframe.Artist">Artist</a></code></h4>
+<ul class="">
+<li><code><a title="PyFrame.pyframe.Artist.deactivate" href="#PyFrame.pyframe.Artist.deactivate">deactivate</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.draw" href="#PyFrame.pyframe.Artist.draw">draw</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.isActive" href="#PyFrame.pyframe.Artist.isActive">isActive</a></code></li>
+<li><code><a title="PyFrame.pyframe.Artist.isDone" href="#PyFrame.pyframe.Artist.isDone">isDone</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="PyFrame.pyframe.Canvas" href="#PyFrame.pyframe.Canvas">Canvas</a></code></h4>
+<ul class="two-column">
+<li><code><a title="PyFrame.pyframe.Canvas.addArtist" href="#PyFrame.pyframe.Canvas.addArtist">addArtist</a></code></li>
+<li><code><a title="PyFrame.pyframe.Canvas.addArtistFactory" href="#PyFrame.pyframe.Canvas.addArtistFactory">addArtistFactory</a></code></li>
+<li><code><a title="PyFrame.pyframe.Canvas.draw" href="#PyFrame.pyframe.Canvas.draw">draw</a></code></li>
+<li><code><a title="PyFrame.pyframe.Canvas.getActiveArtists" href="#PyFrame.pyframe.Canvas.getActiveArtists">getActiveArtists</a></code></li>
+<li><code><a title="PyFrame.pyframe.Canvas.getAllArtists" href="#PyFrame.pyframe.Canvas.getAllArtists">getAllArtists</a></code></li>
+<li><code><a title="PyFrame.pyframe.Canvas.resetAxes" href="#PyFrame.pyframe.Canvas.resetAxes">resetAxes</a></code></li>
+<li><code><a title="PyFrame.pyframe.Canvas.save" href="#PyFrame.pyframe.Canvas.save">save</a></code></li>
+<li><code><a title="PyFrame.pyframe.Canvas.show" href="#PyFrame.pyframe.Canvas.show">show</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="PyFrame.pyframe.OneTimeArtist" href="#PyFrame.pyframe.OneTimeArtist">OneTimeArtist</a></code></h4>
+</li>
+<li>
+<h4><code><a title="PyFrame.pyframe.TimedArtist" href="#PyFrame.pyframe.TimedArtist">TimedArtist</a></code></h4>
+</li>
+<li>
+<h4><code><a title="PyFrame.pyframe.ToggledArtist" href="#PyFrame.pyframe.ToggledArtist">ToggledArtist</a></code></h4>
+<ul class="">
+<li><code><a title="PyFrame.pyframe.ToggledArtist.toggle" href="#PyFrame.pyframe.ToggledArtist.toggle">toggle</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

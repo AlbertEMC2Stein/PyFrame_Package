@@ -1,0 +1,10 @@
+# VSC
+.vscode
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info
+
+# macOS
+.DS_Store
